@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import time
 
 url = "https://scrapingclub.com/exercise/list_basic/?page=1"
 response = requests.get(url)
