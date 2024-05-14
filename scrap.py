@@ -37,8 +37,8 @@ for count in range(1, page_count):
   product_card = data.find_all("div", class_="w-full rounded border")
 
   #get all internal product links
-  for item in product_card:
-    internal_content = item.find("a").get("href")
+  for product_card in product_card:
+    internal_content = product_card.find("a").get("href")
     card_urls.append(internal_content)
   
 #collect data from all cards into results
@@ -46,14 +46,12 @@ for card_url in card_urls:
   print(f'get data from card {card_url}.')
   url = main_url + card_url
   data = get_data(url)
-  product_card = data.find_all("div", class_="my-8 w-full rounded border")
-  
-  for item in product_card:
-    name = item.find("h3", class_="card-title").text
-    price = item.find("h4", class_="card-price").text
-    description = item.find("p", class_="card-description").text
-    img = item.find("img", class_="card-img-top").get("src")
-    results.append(f"\n- {name} | price: {price}\n{description}\nimg link: {main_url + img}")
+  product_card = data.find("div", class_="my-8 w-full rounded border")
+  name = product_card.find("h3", class_="card-title").text
+  price = product_card.find("h4", class_="card-price").text
+  description = product_card.find("p", class_="card-description").text
+  img = product_card.find("img", class_="card-img-top").get("src")
+  results.append(f"\n- {name} | price: {price}\n{description}\nimg link: {main_url + img}")
 
 for i in results:
   print(i)
