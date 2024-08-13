@@ -1,3 +1,2 @@
 # webpage-scraper
-#
-# pip install requests, beautifulsoup4, lxml
+pip install requests, beautifulsoup4, lxml
